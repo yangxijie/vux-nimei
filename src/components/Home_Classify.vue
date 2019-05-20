@@ -19,6 +19,7 @@
       </grid-item>
     </grid>
   </div>
+
 </template>
 <script>
   import { Grid, GridItem } from 'vux'

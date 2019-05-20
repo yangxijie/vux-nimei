@@ -29,7 +29,7 @@
       <span v-html="detail.detailInfo"></span>
     </div>
     <box gap="10px 10px">
-      <a href="http://w1.ttkefu.com/k/linkurl/?t=7B1BGBB2"><x-button type="primary">咨询</x-button></a>
+      <a href="http://w1.ttkefu.com/k/linkurl/?t=5B1BGFJ9"><x-button type="primary">咨询</x-button></a>
     </box>
   </div>
 </template>

@@ -1,8 +1,8 @@
 import axios from 'axios'
 const qs = require('qs')
 
-axios.defaults.baseURL = 'http://140.246.250.63:9090/'
-// axios.defaults.baseURL = 'http://localhost:9090/'
+// axios.defaults.baseURL = 'http://140.246.250.63:9090/'
+axios.defaults.baseURL = 'http://localhost:9090/'
 // 设置默认请求头
 axios.defaults.headers = {
   'content-type': 'application/json;charset=utf-8'

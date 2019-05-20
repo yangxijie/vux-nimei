@@ -11,7 +11,7 @@
 </template>
 <script>
   import {Divider, Swiper} from 'vux'
-  import hc from '../components/Home_Classify'
+  import hc from '../components/Classification'
   import sc from '../components/Seckill_Card'
   import shopcard from '../components/Shop_card'
   import {api} from '../api/api'

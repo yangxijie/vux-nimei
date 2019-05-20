@@ -2,8 +2,9 @@
   <div class="box">
     <div class="shop_list" v-for="i in list" :key="i.id" @click="onItemClick(i)">
       <img :src="i.cover" class="img"/>
-      <h4 style="text-align: center">{{i.productName}}</h4>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sp1">¥{{i.promotePrice}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sp2">已有{{i.stock}}人购买</span></p>
+      <p style="text-align: center">{{i.productName}}</p>
+      <p>定金¥{{i.promotePrice}}元</p>
+      <p>已有{{i.stock}}人购买</p>
     </div>
   </div>
 </template>
