@@ -10,6 +10,8 @@ import Es6Promise from 'es6-promise'
 import Info from './page/Info'
 import Detail from './page/Good_Detail'
 import Qrcode from './page/Qrcode'
+import GetCoupon from './page/MyCoupon'
+import OrderForm from './page/ToOrder'
 import { ToastPlugin } from 'vux'
 
 Es6Promise.polyfill()
@@ -27,6 +29,12 @@ const routes = [{
 }, {
   path: '/qr',
   component: Qrcode
+}, {
+  path: '/tooder',
+  component: OrderForm
+}, {
+  path: '/getCoupon',
+  component: GetCoupon
 }]
 
 const router = new VueRouter({

@@ -18,7 +18,7 @@
       <cell-box is-link link="">
         成为会员
       </cell-box>
-      <cell-box is-link link="">
+      <cell-box is-link :link="{ path: '/getCoupon', query: {id: userInfo.openId}}">
         优惠卷
       </cell-box>
     </group>

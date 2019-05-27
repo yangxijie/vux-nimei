@@ -5,7 +5,7 @@
         <swiper-slide  class="icons-silde"  v-for="(slide, key) in iconsList" :key="key" >
           <ul class="icons-ul">
             <li class="icons-li" v-for="(value, key) in slide" :key="key" data-id="value.id">
-              <router-link class="icons-link" to="/">
+              <router-link class="icons-link" :to="{ path: '/detail',query: { id: value.id }}">
                 <img class="icons-img" :src="value.imgSrc" alt="">
                 <span>{{value.text}}</span>
               </router-link>
@@ -24,54 +24,54 @@ import '../assets/styles/border.css' // 引入1像素边框样式文件
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
 const imgLi = [{
-  id: '0001',
+  id: '5cce7d3441b6401d2f68c1de',
   imgSrc:
-    '/src/assets/demo/icon_nav_01_new.png',
+    'static/icon_nav_01_new.png',
   text: '丰胸'
 }, {
-  id: '0002',
+  id: '5cce7d3441b6401d2f68c1f8',
   imgSrc:
-    '/src/assets/demo/icon_nav_02_new.png',
+    'static/icon_nav_02_new.png',
   text: '脸部'
 }, {
-  id: '0003',
+  id: '5cce7d3441b6401d2f68c1fe',
   imgSrc:
-    '/src/assets/demo/icon_nav_03_new.png',
+    'static/icon_nav_03_new.png',
   text: '形体'
 }, {
-  id: '0004',
+  id: '5cce7d3441b6401d2f68c1f2',
   imgSrc:
-    '/src/assets/demo/icon_nav_04_new.png',
+    'static/icon_nav_04_new.png',
   text: '除皱'
 }, {
-  id: '0005',
+  id: '',
   imgSrc:
-    '/src/assets/demo/icon_nav_05_new',
+    'static/icon_nav_05_new.png',
   text: '鼻部整形'
 }, {
-  id: '0006',
+  id: '5cce7d3441b6401d2f68c1ec',
   imgSrc:
-    '/src/assets/demo/icon_nav_06_new',
-  text: '眼部整形'
+    'static/icon_nav_06_new.png',
+  text: '腿部整形'
 }, {
   id: '0007',
   imgSrc:
-    '/src/assets/demo/icon_nav_07_new',
+    'static/icon_nav_07_new.png',
   text: '激光脱毛'
 }, {
   id: '0008',
   imgSrc:
-    '/src/assets/demo/icon_nav_08_new',
-  text: '踏青赏花'
+    'static/icon_nav_08_new.png',
+  text: '化妆品'
 }, {
   id: '0009',
   imgSrc:
-    '/src/assets/demo/icon_nav_09_new',
-  text: '演出'
+    'static/icon_nav_09_new.png',
+  text: '嘴部整形'
 }, {
   id: '0010',
   imgSrc:
-    '/src/assets/demo/icon_nav_10_new',
+    'static/icon_nav_10_new.png',
   text: '玻尿酸'
 }]
 export default {

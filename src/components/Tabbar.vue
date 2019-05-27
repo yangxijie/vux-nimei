@@ -9,7 +9,7 @@
       <tabbar-item >
         <img slot="icon" src="../assets/demo/icon_classify.png">
         <img slot="icon-active" src="../assets/demo/icon_classify_active.png">
-        <span slot="label">分类</span>
+        <span slot="label">咨询</span>
       </tabbar-item>
       <tabbar-item link="/page/Info">
         <img slot="icon" src="../assets/demo/icon_info.png">

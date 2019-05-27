@@ -10,6 +10,7 @@
           <span slot="label">主页</span>
         </tabbar-item>
         <tabbar-item link="http://w1.ttkefu.com/k/linkurl/?t=5B1BGFJ9">
+        <!--<tabbar-item link="/getCoupon">-->
           <img slot="icon" src="./assets/demo/icon_classify.png">
           <img slot="icon-active" src="./assets/demo/icon_classify_active.png">
           <span slot="label">咨询</span>
