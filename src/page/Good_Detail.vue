@@ -29,8 +29,9 @@
       <span v-html="detail.detailInfo"></span>
     </div>
     <box gap="10px 10px">
-      <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4090b3ba169287ef&redirect_uri=http%3a%2f%2fwww.kaidi.work%2fToOder&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect"><x-button type="primary" >咨询</x-button></a>
-      <!--@click.native="toOrder"-->
+      <a :href='"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4090b3ba169287ef&redirect_uri=http%3a%2f%2fwww.kaidi.work%2ftooder&response_type=code&scope=snsapi_base&state=" + id + "#wechat_redirect"'><x-button type="primary" >购买</x-button></a>
+
+      <!--<x-button type="primary"  @click.native="toOrder" >咨询</x-button>-->
     </box>
   </div>
 </template>
@@ -49,7 +50,8 @@
       return {
         title: '注意事项',
         detail: {},
-        showContent: false
+        showContent: false,
+        id: this.$route.query.id
       }
     },
     methods: {
@@ -58,9 +60,6 @@
           id: this.$route.query.id
         })
         this.detail = data.result
-      },
-      toOrder () {
-        this.$router.push({path: '/tooder?pro=' + JSON.stringify(this.detail)})
       }
     },
     mounted: function () {

@@ -1,26 +1,18 @@
 <template>
   <section class="aui-flexView">
     <header class="aui-navBar aui-navBar-fixed">
-      <a href="javascript:;" class="aui-navBar-item">
-        <i class="icon icon-return"></i>
-      </a>
-      <div class="aui-center">
-        <span class="aui-center-title">确认订单</span>
-      </div>
-      <a href="javascript:;" class="aui-navBar-item">
-        <i class="icon icon-sys"></i>
-      </a>
+      <span>订单确认</span>
     </header>
     <section class="aui-scrollView">
       <div class="aui-order-box">
-        <div class="aui-flex aui-choice-white aui-mar15">
-          <div class="aui-flex-box">请填写联系</div>
-          <input type="text" class="linkman" placeholder="请输入姓名"><br>
-        </div>
-        <div class="aui-flex aui-choice-white aui-mar15 a">
-          <div class="aui-flex-box">请填写手机号</div>
-          <input type="text" class="linktel" placeholder="请输入手机号">
-        </div>
+        <!--<div class="aui-flex aui-choice-white aui-mar15">-->
+          <!--<div class="aui-flex-box">请填写联系</div>-->
+          <!--<input type="text" class="linkman" placeholder="请输入姓名"><br>-->
+        <!--</div>-->
+        <!--<div class="aui-flex aui-choice-white aui-mar15 a">-->
+          <!--<div class="aui-flex-box">请填写手机号</div>-->
+          <!--<input type="text" class="linktel" placeholder="请输入手机号">-->
+        <!--</div>-->
         <div class="aui-flex aui-flex-default aui-mar15">
           <div class="aui-flex-goods">
             <img :src="productList.cover" alt="">
@@ -75,12 +67,13 @@
 <script>
   import '../assets/styles/toorder.css'
   import {api} from '../api/api'
+  import wx from 'weixin-js-sdk'
   export default {
     name: 'ToOrder',
     created () {
-      this.productList = JSON.parse(this.$route.query.pro)
       this.getUserInfo(this.$route.query.code)
-      this.toPayFor(this.openid, (new Date()).valueOf(), this.productList.productName, this.productList.privilegePrice)
+      this.getCpist(this.useropenid)
+      this.onQueryDetail(this.$route.query.state)
     },
     data: function () {
       return {
@@ -91,29 +84,61 @@
         couplenth: {}
       }
     },
-    async getUserInfo (code) {
-      let data = await api.get('api/userInfo', {
-        code: code
-      })
-      this.userInfo = data.result
-      this.useropenid = data.result.openId
-      this.getCpist(data.result.openId)
-    },
-    async getCpist (userOpenid) {
-      let data = await api.get('user/getCoupon', {
-        userId: userOpenid
-      })
-      this.couponList = data.result
-      this.couplenth = data.result.length()
-    },
-    toPayFor (openid, outTradeNo, body, totalFee) {
-      let data = api.get('pay/createOrder', {
-        openid: openid,
-        outTradeNo: outTradeNo,
-        body: outTradeNo,
-        totalFee: totalFee
-      })
-
+    methods: {
+      async getUserInfo (code) {
+        let data = await api.get('api/userInfo', {
+          code: code
+        })
+        this.userInfo = data.result
+        this.useropenid = data.result.openId
+        this.getCpist(data.result.openId)
+      },
+      async onQueryDetail (uid) {
+        let data = await api.get('product/getStepProductById', {
+          id: uid
+        })
+        this.productList = data.result
+      },
+      async getCpist (userOpenid) {
+        let data = await api.get('user/getCoupon', {
+          userId: userOpenid
+        })
+        this.couponList = data.result
+        this.couplenth = data.result.length
+      },
+      async toPayFor () {
+        console.log('1')
+        await api.post('pay/createOrder', {
+          openid: this.useropenid,
+          outTradeNo: (new Date()).valueOf(),
+          body: this.productList.productName,
+          totalFee: this.productList.privilegePrice
+        }).catch(data => {
+          console.log('错误：' + JSON.stringify(data))
+          if (data.status === true) {
+            console.log('执行微信SDK。。。。')
+            wx.chooseWXPay({
+              appId: data.result.appId,
+              timestamp: data.result.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+              nonceStr: data.result.nonceStr, // 支付签名随机串，不长于 32 位
+              package: data.result.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
+              signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+              paySign: data.result.paySign, // 支付签名
+              success: function (res) {
+                console.log(res)
+                // 支付成功后的回调函数
+                this.$router.push('/info')
+              },
+              fail: function (err) {
+                console.log('出现错误.....')
+                console.log(err)
+              }
+            })
+          }
+        })
+        // console.log('2')
+        // console.log('数据 ' + JSON.stringify(data.result))
+      }
     }
   }
 </script>

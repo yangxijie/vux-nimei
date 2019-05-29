@@ -1,4 +1,4 @@
-html,body {
+html{
   background: #fff;
   color: #555;
   font-size: .28em;
@@ -6,13 +6,6 @@ html,body {
   font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   -webkit-text-size-adjust: none;
 }
-
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 a {
   text-decoration: none;
   color: #000;
@@ -45,24 +38,7 @@ button {
   outline: 0;
 }
 
-img {
-  border: 0;
-}
 
-button,input,optgroup,select,textarea {
-  margin: 0;
-  font: inherit;
-  color: inherit;
-  outline: none;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  color: #666;
-}
 
 .clearfix::after {
   clear: both;
@@ -157,6 +133,7 @@ a {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+
 }
 
 .aui-scrollView {

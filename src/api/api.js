@@ -1,12 +1,12 @@
 import axios from 'axios'
-const qs = require('qs')
+// const qs = require('qs')
 
-// axios.defaults.baseURL = 'http://140.246.250.63:9090/'
-axios.defaults.baseURL = 'http://localhost:9090/'
-// 设置默认请求头
-axios.defaults.headers = {
-  'content-type': 'application/json;charset=utf-8'
-}
+axios.defaults.baseURL = 'http://www.anniemodern.com/nimei'
+// axios.defaults.baseURL = 'http://localhost:9090/'
+// // 设置默认请求头
+// axios.defaults.headers = {
+//   'content-type': 'application/json;charset=utf-8'
+// }
 axios.defaults.timeout = 10000
 
 const api = {
@@ -28,7 +28,15 @@ const api = {
   },
   async post (url, data) {
     try {
-      let res = await axios.post(url, qs.stringify(data))
+      let res = await axios.post(url, data)
+      // let res = await axios({
+      //   method: 'post',
+      //   url: url,
+      //   data: data,
+      //   headers: {
+      //     'content-type': 'application/json;charset=utf-8'
+      //   }
+      // })
       res = res.data
       return new Promise((resolve, reject) => {
         if (res.code === 0) {

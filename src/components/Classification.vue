@@ -54,22 +54,22 @@ const imgLi = [{
     'static/icon_nav_06_new.png',
   text: '腿部整形'
 }, {
-  id: '0007',
+  id: '5cce7d3441b6401d2f68c1e8',
   imgSrc:
     'static/icon_nav_07_new.png',
   text: '激光脱毛'
 }, {
-  id: '0008',
+  id: '5cce7d3441b6401d2f68c1e8',
   imgSrc:
     'static/icon_nav_08_new.png',
   text: '化妆品'
 }, {
-  id: '0009',
+  id: '5cce7d3441b6401d2f68c1ee',
   imgSrc:
     'static/icon_nav_09_new.png',
   text: '嘴部整形'
 }, {
-  id: '0010',
+  id: '5cce7d3441b6401d2f68c1f6',
   imgSrc:
     'static/icon_nav_10_new.png',
   text: '玻尿酸'
