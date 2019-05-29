@@ -7,7 +7,7 @@
             <li class="icons-li" v-for="(value, key) in slide" :key="key" data-id="value.id">
               <router-link class="icons-link" :to="{ path: '/detail',query: { id: value.id }}">
                 <img class="icons-img" :src="value.imgSrc" alt="">
-                <span>{{value.text}}</span>
+                <span style=" font-size: 0.95rem;">{{value.text}}</span>
               </router-link>
             </li>
           </ul>

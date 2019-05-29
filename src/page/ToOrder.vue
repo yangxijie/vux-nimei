@@ -1,7 +1,9 @@
 <template>
   <section class="aui-flexView">
-    <header class="aui-navBar aui-navBar-fixed">
-      <span>订单确认</span>
+    <header class="aui-navBar aui-navBar-fixed" style="text-align:center">
+      <div class="aui-center">
+        <span class="aui-center-title">订单确认</span>
+      </div>
     </header>
     <section class="aui-scrollView">
       <div class="aui-order-box">

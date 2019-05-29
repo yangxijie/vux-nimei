@@ -1,4 +1,4 @@
-<template>
+<template >
   <section class="aui-flexView">
     <header class="aui-navBar aui-navBar-fixed b-line">
       <a href="javascript:;" class="aui-navBar-item">
@@ -58,6 +58,6 @@
   }
 </script>
 
-<style lang="less">
+<style scoped>
 
 </style>
