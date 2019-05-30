@@ -76,6 +76,7 @@
       this.getUserInfo(this.$route.query.code)
       this.getCpist(this.useropenid)
       this.onQueryDetail(this.$route.query.state)
+      this.getJsApiConfig(document.URL)
     },
     data: function () {
       return {
@@ -87,6 +88,19 @@
       }
     },
     methods: {
+      async getJsApiConfig (url) {
+        let data = await api.get('api/getJsApiSign', {
+          url: url
+        })
+        wx.config({
+          debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+          appId: 'wx4090b3ba169287ef', // 必填，公众号的唯一标识
+          timestamp: data.result.time_stamp, // 必填，生成签名的时间戳
+          nonceStr: data.result.nonce_str, // 必填，生成签名的随机串
+          signature: data.result.signature, // 必填，签名
+          jsApiList: ['chooseWXPay'] // 必填，需要使用的JS接口列表
+        })
+      },
       async getUserInfo (code) {
         let data = await api.get('api/userInfo', {
           code: code
@@ -114,7 +128,7 @@
           openid: this.useropenid,
           outTradeNo: (new Date()).valueOf(),
           body: this.productList.productName,
-          totalFee: this.productList.privilegePrice
+          totalFee: (parseFloat(this.productList.privilegePrice).toFixed(2)) * 100
         }).catch(data => {
           console.log('错误：' + JSON.stringify(data))
           if (data.status === true) {
