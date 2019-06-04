@@ -15,7 +15,7 @@
           <img slot="icon-active" src="./assets/demo/icon_classify_active.png">
           <span slot="label">咨询</span>
         </tabbar-item>
-        <tabbar-item link="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4090b3ba169287ef&redirect_uri=http%3a%2f%2fwww.kaidi.work%2finfo&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect">
+        <tabbar-item link="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4090b3ba169287ef&redirect_uri=http%3a%2f%2fwww.anniemodern.com%2finfo&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect">
           <img slot="icon" src="./assets/demo/icon_info.png">
           <img slot="icon-active" src="./assets/demo/icon_info_active.png">
           <span slot="label">我的</span>
