@@ -136,7 +136,7 @@
           openid: this.useropenid,
           outTradeNo: (new Date()).valueOf(),
           body: this.productList.productName,
-          totalFee: (parseFloat(this.productList.privilegePrice).toFixed(2)) * 100
+          totalFee: (parseFloat(this.productList.promotePrice).toFixed(2)) * 100
         }).catch(data => {
           console.log('错误：' + JSON.stringify(data))
           if (data.status === true) {
