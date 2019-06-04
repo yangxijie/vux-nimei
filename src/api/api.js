@@ -23,20 +23,11 @@ const api = {
       })
     } catch (err) {
       console.log(err)
-      this.$vux.toast.text('请求出错', 'middle')
     }
   },
   async post (url, data) {
     try {
       let res = await axios.post(url, data)
-      // let res = await axios({
-      //   method: 'post',
-      //   url: url,
-      //   data: data,
-      //   headers: {
-      //     'content-type': 'application/json;charset=utf-8'
-      //   }
-      // })
       res = res.data
       return new Promise((resolve, reject) => {
         if (res.code === 0) {
@@ -47,7 +38,6 @@ const api = {
       })
     } catch (err) {
       console.log(err)
-      this.$vux.toast.text('请求出错', 'middle')
     }
   }
 }

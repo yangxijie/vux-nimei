@@ -1,7 +1,7 @@
-<template >
+<template>
   <section class="aui-flexView">
     <header class="aui-navBar aui-navBar-fixed b-line">
-      <a href="javascript:;" class="aui-navBar-item">
+      <a @click="gopayfor" class="aui-navBar-item">
         <i class="icon icon-return"></i>
       </a>
       <div class="aui-center">
@@ -24,7 +24,7 @@
               <div class="aui-flex-box">
                 <h2>{{value.describe}}</h2>
                 <h3>2019.09.03~2029.09.29</h3>
-                <!-- <button>去使用</button> -->
+                 <button @click="gopayfor(key)" :value="value.index" >去使用</button>
               </div>
             </a>
           </div>
@@ -51,8 +51,12 @@
         let data = await api.get('user/getCoupon', {
           userId: userOpenid
         })
-        console.log(data.result)
+        console.log('目标地址' + JSON.parse(this.$route.query.target))
         this.couponList = data.result
+      },
+      async gopayfor (vaindex) {
+        localStorage.setItem('getchoose', vaindex)
+        window.location.href = JSON.parse(this.$route.query.target)
       }
     }
   }

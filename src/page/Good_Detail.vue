@@ -46,6 +46,9 @@
       Box,
       XButton
     },
+    created () {
+      localStorage.setItem('getchoose', '0')
+    },
     data: function () {
       return {
         title: '注意事项',

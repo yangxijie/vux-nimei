@@ -32,10 +32,14 @@
           <div class="aui-flex-box">支付方式</div>
           <div class="aui-flex-triangle">微信支付</div>
         </div>
-        <div class="aui-flex aui-choice-white b-line">
-          <div class="aui-flex-box">代金券</div>
-          <div class="aui-flex-triangle">{{couplenth}}张可用</div>
-        </div>
+        <!--<div class="aui-flex aui-choice-white b-line">-->
+          <!--<div class="aui-flex-box">使用代金券</div>-->
+          <!--<div v-if="couponList==''"><a :href='"/chooseCoupon?id="+useropenid' ><div class="aui-flex-triangle">{{couplenth}}张可用</div></a></div>-->
+          <!--<div v-if="couponList!=''"><a :href='"/chooseCoupon?id="+useropenid+"&target="+target' ><div class="aui-flex-triangle"> -￥ {{couponList[this.chooseindex].offset}}元</div></a></div>-->
+        <!--</div>-->
+        <!--<div class="aui-flex aui-choice-white b-line" v-for="(value, key) in couponList" :key="key">-->
+          <!--￥{{value.offset}}<input type="radio" :value="value.offset" >-->
+        <!--</div>-->
         <div class="aui-flex aui-choice-white  aui-mar15">
           <div class="aui-flex-box">发票信息</div>
           <div class="aui-flex-triangle">不可开发票</div>
@@ -48,6 +52,7 @@
           </div>
           <div class="aui-flex-triangle aui-flex-triangle-clear">
             <h4>￥{{productList.privilegePrice}}</h4>
+
             <!--<p>+￥10元</p>-->
           </div>
         </div>
@@ -56,7 +61,9 @@
     <footer class="aui-bar-footer">
       <div class="aui-flex">
         <div class="aui-flex-box">
-          应付金额：<em>{{productList.privilegePrice}}</em>
+          <!--<h4 v-if="couponList==''">应付金额：<em>{{productList.promotePrice}}</em></h4>-->
+          <!--<h4 v-if="couponList!=''">应付金额：<em>{{productList.promotePrice-couponList[this.chooseindex].offset}}</em></h4>-->
+          应付金额：<em>{{productList.promotePrice}}</em>
         </div>
         <div class="aui-btn-button">
           <button @click="toPayFor">去支付</button>
@@ -81,10 +88,12 @@
     data: function () {
       return {
         productList: {},
-        useropenid: {},
+        useropenid: 'oVgkK57kkxMUxVn24xDW01jeSssE',
         userInfo: {},
         couponList: {},
-        couplenth: {}
+        couplenth: {},
+        target: JSON.stringify(location.href),
+        chooseindex: localStorage.getItem('getchoose')
       }
     },
     methods: {
@@ -123,7 +132,6 @@
         this.couplenth = data.result.length
       },
       async toPayFor () {
-        console.log('1')
         await api.post('pay/createOrder', {
           openid: this.useropenid,
           outTradeNo: (new Date()).valueOf(),
@@ -141,7 +149,8 @@
               signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
               paySign: data.result.paySign, // 支付签名
               success: function (res) {
-                console.log(res)
+                // console.log(res)
+                alert(res)
                 // 支付成功后的回调函数
                 this.$router.push('/info')
               },
@@ -152,8 +161,6 @@
             })
           }
         })
-        // console.log('2')
-        // console.log('数据 ' + JSON.stringify(data.result))
       }
     }
   }

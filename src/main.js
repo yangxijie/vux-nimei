@@ -11,6 +11,7 @@ import Info from './page/Info'
 import Detail from './page/Good_Detail'
 import Qrcode from './page/Qrcode'
 import GetCoupon from './page/MyCoupon'
+import ChooseCoupon from './page/ChooseCoupon'
 import OrderForm from './page/ToOrder'
 import { ToastPlugin } from 'vux'
 
@@ -35,6 +36,9 @@ const routes = [{
 }, {
   path: '/getCoupon',
   component: GetCoupon
+}, {
+  path: '/chooseCoupon',
+  component: ChooseCoupon
 }]
 
 const router = new VueRouter({
