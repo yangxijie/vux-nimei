@@ -88,7 +88,7 @@
     data: function () {
       return {
         productList: {},
-        useropenid: 'oVgkK57kkxMUxVn24xDW01jeSssE',
+        useropenid: this.$route.query.id,
         userInfo: {},
         couponList: {},
         couplenth: {},
